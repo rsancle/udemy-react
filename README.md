@@ -1,4 +1,4 @@
-# ReduxSimpleStarter
+# ReduxSimpleStarter from Udemy React Course
 
 Interested in learning [Redux](https://www.udemy.com/react-redux/)?
 
