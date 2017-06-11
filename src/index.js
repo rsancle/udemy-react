@@ -33,7 +33,7 @@ class App extends Component{
 
 
 		//asign youtube search to videos state
-		YTSearch({ key: API_KEY, term: '' }, (videos) => {
+		YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
 			//old sintax -> this.setState( { videos: videos });
 			this.setState( { videos });
 		});
