@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
+import Lodash from 'lodash';
 
 
 //Custom components
@@ -35,9 +36,12 @@ class App extends Component{
 			selectedVideo: null
 		};
 
+		this.videoSearch('surfboards')
 
+	}
+	videoSearch(term) {
 		//asign youtube search to videos state
-		YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
+		YTSearch({ key: API_KEY, term: term }, (videos) => {
 			//old sintax -> this.setState( { videos: videos });
 			this.setState( {
 				videos: videos,
@@ -47,9 +51,11 @@ class App extends Component{
 	}
 	// app state to child VideList as props
 	render(){
+		//lodash desable the instant search, like google system (3 seconds delay)
+		const videoSearch = Lodash.debounce((term) => {this.videoSearch(term)}, 300)
 		return (
 			<div>
-				<SearchBar />
+				<SearchBar onSearchTermChange = { videoSearch } />
 				<VideoDetail
 					video = { this.state.selectedVideo } />
 				<VideoList

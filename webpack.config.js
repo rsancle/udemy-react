@@ -1,6 +1,10 @@
+//var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/js/index.js',
+    //'./src/sass/main.sass'
+
   ],
   output: {
     path: __dirname,
@@ -14,13 +18,25 @@ module.exports = {
       query: {
         presets: ['react', 'es2015', 'stage-1']
       }
-    }]
+    },
+    // {
+    //   test: /\.scss$/,
+    //   loader: ExtractTextPlugin.extract('css!sass')
+    // }
+    ]
   },
+  // plugins: [
+  //       new ExtractTextPlugin({
+  //           filename: 'public/style.css',
+  //           allChunks: true
+  //       })
+  //   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
     historyApiFallback: true,
     contentBase: './'
-  }
+  },
+
 };
