@@ -30,13 +30,19 @@ class App extends Component{
 		super(props);
 
 		//create a new state videos
-		this.state = { videos: [] };
+		this.state = {
+			videos: [],
+			selectedVideo: null
+		};
 
 
 		//asign youtube search to videos state
 		YTSearch({ key: API_KEY, term: 'surfboards' }, (videos) => {
 			//old sintax -> this.setState( { videos: videos });
-			this.setState( { videos });
+			this.setState( {
+				videos: videos,
+				selectedVideo: videos[0]
+			});
 		});
 	}
 	// app state to child VideList as props
@@ -44,8 +50,11 @@ class App extends Component{
 		return (
 			<div>
 				<SearchBar />
-				<VideoDetail video = { this.state.videos[0] } />
-				<VideoList videos = { this.state.videos }/>
+				<VideoDetail
+					video = { this.state.selectedVideo } />
+				<VideoList
+					onVideoSelect = {selectedVideo => this.setState({selectedVideo })}
+					videos = { this.state.videos }/>
 			</div>
 		);
 	}
