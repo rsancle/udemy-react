@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
- export default class bookList extends Component{
+/*
+* React Component that returns a books html list
+*/
+class bookList extends Component{
    renderlist() {
+
+     // For each book
      return this.props.books.map( (book) => {
        return (
-         <li key = {book.title} className = "list-group-item"> 
+         <li key = {book.title} className = "list-group-item">
            { book.title }
          </li>
        );
@@ -17,4 +23,14 @@ import React, { Component } from 'react';
        </ul>
      );
    }
- }
+}
+
+//populate prop's component
+function mapStateToProps(state) {
+  return {
+    books : state.books
+  };
+}
+
+//connect our map state with our component
+export default connect(mapStateToProps)(BookList);

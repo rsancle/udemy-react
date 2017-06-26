@@ -1,5 +1,5 @@
 # Reduct/Redux exercises
-# Definitions
+## Definitions
 <strong>Container: </strong>
 Is a component that has direct access to the state that is produced by redux
 
